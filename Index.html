@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claudia Barragan - Real Estate Broker</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f1efe8;
+      color: #2c2c2a;
+      line-height: 1.6;
+    }
+    
+    .header {
+      background: #ffffff;
+      border-bottom: 0.5px solid #d3d1c7;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    
+    .header-content {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo-section {
+      flex: 1;
+    }
+    
+    .brand-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #2c2c2a;
+      margin-bottom: 2px;
+    }
+    
+    .brand-subtitle {
+      font-size: 11px;
+      color: #888780;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .language-toggle {
+      display: flex;
+      gap: 8px;
+      background: #f1efe8;
+      padding: 4px;
+      border-radius: 6px;
+    }
+    
+    .lang-btn {
+      padding: 6px 12px;
+      border: none;
+      background: transparent;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 4px;
+      color: #888780;
+      transition: all 0.2s;
+    }
+    
+    .lang-btn.active {
+      background: #ffffff;
+      color: #2c2c2a;
+      box-shadow: 0 0 0 0.5px #d3d1c7;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem;
+    }
+    
+    .hero {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .hero-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #f1efe8;
+      border: 0.5px solid #d3d1c7;
+      margin: 0 auto 1rem;
+      overflow: hidden;
+    }
+    
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .hero h1 {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    
+    .hero p {
+      font-size: 14px;
+      color: #888780;
+      margin-bottom: 12px;
+    }
+    
+    .hero-tagline {
+      font-size: 16px;
+      color: #2c2c2a;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    
+    .section {
+      display: none;
+    }
+    
+    .section.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 2rem;
+    }
+    
+    .card {
+      background: #ffffff;
+      border: 0.5px solid #d3d1c7;
+      border-radius: 12px;
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    
+    .card:hover {
+      border-color: #5f5e5a;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transform: translateY(-2px);
+    }
+    
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+    
+    .card-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #2c2c2a;
+    }
+    
+    .content-section {
+      background: #ffffff;
+      border: 0.5px solid #d3d1c7;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .content-section h2 {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .content-section h3 {
+      font-size: 15px;
+      font-weight: 500;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      color: #2c2c2a;
+    }
+    
+    .content-section p {
+      font-size: 14px;
+      color: #888780;
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+    
+    .content-section ul {
+      margin-left: 1.25rem;
+      margin-bottom: 1rem;
+      font-size: 14px;
+      color: #888780;
+    }
+    
+    .content-section li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #2c2c2a;
+      cursor: pointer;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    
+    .back-link:hover {
+      color: #888780;
+    }
+    
+    .cta-section {
+      background: #ffffff;
+      border: 0.5px solid #d3d1c7;
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .cta-section h3 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .cta-section p {
+      font-size: 13px;
+      color: #888780;
+      margin-bottom: 1rem;
+    }
+    
+    .email-link {
+      display: inline-block;
+      background: #185fa5;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    
+    .email-link:hover {
+      background: #0c447c;
+      transform: translateY(-1px);
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 12px;
+      color: #b4b2a9;
+      border-top: 0.5px solid #d3d1c7;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-content">
+      <div class="logo-section">
+        <div class="brand-name">Claudia Barragan</div>
+        <div class="brand-subtitle">Real Estate Broker</div>
+      </div>
+      <div class="language-toggle">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <section class="section active" id="home">
+      <div class="hero">
+        <div class="hero-photo">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" alt="Claudia Barragan">
+        </div>
+        <h1 data-en="First-Time Buyer?" data-es="¿Comprador por Primera Vez?"></h1>
+        <p data-en="We speak your language" data-es="Hablamos tu idioma"></p>
+        <div class="hero-tagline" data-en="Licensed through @properties Christie's International Real Estate. Serving Illinois & Indiana." data-es="Licenciada a través de @properties Christie's International Real Estate. Sirviendo Illinois & Indiana."></div>
+      </div>
+
+      <div class="card-grid" id="cardGrid">
+        <div class="card" onclick="showSection('buying-process')">
+          <div class="card-icon">🏠</div>
+          <div class="card-title" data-en="The Buying Process" data-es="El Proceso de Compra"></div>
+        </div>
+        <div class="card" onclick="showSection('terminology')">
+          <div class="card-icon">📚</div>
+          <div class="card-title" data-en="Terminology Guide" data-es="Guía de Términos"></div>
+        </div>
+        <div class="card" onclick="showSection('resources')">
+          <div class="card-icon">📋</div>
+          <div class="card-title" data-en="Resources" data-es="Recursos"></div>
+        </div>
+        <div class="card" onclick="showSection('contact')">
+          <div class="card-icon">💬</div>
+          <div class="card-title" data-en="Get in Touch" data-es="Contáctame"></div>
+        </div>
+      </div>
+
+      <div class="cta-section">
+        <h3 data-en="Ready to start your journey?" data-es="¿Listo para comenzar tu viaje?"></h3>
+        <p data-en="Get answers to your questions. No pressure, just guidance." data-es="Obtén respuestas a tus preguntas. Sin presión, solo orientación."></p>
+        <a href="mailto:soldbyclaudia@proton.me" class="email-link" data-en="Email Me" data-es="Envíame un Email"></a>
+      </div>
+    </section>
+
+    <section class="section" id="buying-process">
+      <div class="back-link" onclick="showSection('home')">← <span data-en="Back" data-es="Atrás"></span></div>
+      <div class="content-section">
+        <h2 data-en="🏠 The Buying Process" data-es="🏠 El Proceso de Compra"></h2>
+        <p data-en="Here's what to expect when you're ready to buy your first home." data-es="Esto es lo que debes esperar cuando estés listo para comprar tu primera casa."></p>
+        
+        <h3 data-en="Step 1: Get Pre-Approved" data-es="Paso 1: Obtén Pre-Aprobación"></h3>
+        <p data-en="Talk to a lender to find out how much you can borrow and what your monthly payment will be." data-es="Habla con un prestamista para saber cuánto puedes pedir prestado y cuál será tu pago mensual."></p>
+        
+        <h3 data-en="Step 2: Find a Property" data-es="Paso 2: Encuentra una Propiedad"></h3>
+        <p data-en="Search for homes that fit your budget and lifestyle. I can help guide you through neighborhoods and show properties." data-es="Busca casas que se ajusten a tu presupuesto y estilo de vida. Puedo ayudarte a explorar vecindarios y mostrar propiedades."></p>
+        
+        <h3 data-en="Step 3: Make an Offer" data-es="Paso 3: Haz una Oferta"></h3>
+        <p data-en="When you find the right place, we'll submit a competitive offer. This is where negotiation happens." data-es="Cuando encuentres el lugar correcto, presentaremos una oferta competitiva. Aquí es donde ocurre la negociación."></p>
+        
+        <h3 data-en="Step 4: Inspections & Appraisal" data-es="Paso 4: Inspecciones y Tasación"></h3>
+        <p data-en="A home inspector checks the structure, and the lender orders an appraisal to ensure the property value is fair." data-es="Un inspector de vivienda verifica la estructura, y el prestamista ordena una tasación para asegurar que el valor de la propiedad sea justo."></p>
+        
+        <h3 data-en="Step 5: Close the Loan" data-es="Paso 5: Cierra el Préstamo"></h3>
+        <p data-en="Sign final paperwork, transfer funds, and get your keys. Congratulations—you're a homeowner!" data-es="Firma la documentación final, transfiere fondos y obtén tus llaves. ¡Felicidades, eres propietario de una casa!"></p>
+        
+        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 0.5px solid #d3d1c7;">
+          <p data-en="Have questions about any step? Let's talk." data-es="¿Tienes preguntas sobre algún paso? Hablemos."></p>
+          <a href="mailto:soldbyclaudia@proton.me" class="email-link" data-en="Email Me" data-es="Envíame un Email"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="terminology">
+      <div class="back-link" onclick="showSection('home')">← <span data-en="Back" data-es="Atrás"></span></div>
+      <div class="content-section">
+        <h2 data-en="📚 Common Terms Explained" data-es="📚 Términos Comunes Explicados"></h2>
+        <p data-en="Real estate comes with its own language. Here's what you need to know." data-es="El sector inmobiliario tiene su propio idioma. Aquí hay lo que necesitas saber."></p>
+        
+        <h3 data-en="Earnest Money" data-es="Dinero en Serio"></h3>
+        <p data-en="Money you put down when you make an offer to show you're serious. Usually 1-3% of the purchase price. You'll get it back at closing if you buy, or it may be forfeited if you back out." data-es="Dinero que depositas cuando haces una oferta para demostrar que hablas en serio. Usualmente 1-3% del precio de compra. Lo recuperarás en el cierre si compras, o se puede perder si te retiras."></p>
+        
+        <h3 data-en="Down Payment" data-es="Pago Inicial"></h3>
+        <p data-en="The percentage of the home's price you pay upfront. First-time buyers often put down 3-10%, though more is possible." data-es="El porcentaje del precio de la casa que pagas al inicio. Los compradores por primera vez generalmente ponen un 3-10%, aunque es posible más."></p>
+        
+        <h3 data-en="Appraisal" data-es="Tasación"></h3>
+        <p data-en="An independent professional assesses the home's market value to ensure it's worth what you're paying." data-es="Un profesional independiente evalúa el valor de mercado de la casa para asegurar que vale lo que estás pagando."></p>
+        
+        <h3 data-en="Inspection" data-es="Inspección"></h3>
+        <p data-en="A detailed check of the home's structure, systems, and condition. It's separate from the appraisal." data-es="Una verificación detallada de la estructura, sistemas y condición de la casa. Es separado de la tasación."></p>
+        
+        <h3 data-en="Closing Costs" data-es="Costos de Cierre"></h3>
+        <p data-en="Fees for the loan, title insurance, inspections, and other services. Usually 2-5% of the purchase price." data-es="Tarifas para el préstamo, seguro de título, inspecciones y otros servicios. Usualmente 2-5% del precio de compra."></p>
+        
+        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 0.5px solid #d3d1c7;">
+          <p data-en="Confused by a term you heard? Ask me." data-es="¿Confundido por un término que escuchaste? Pregúntame."></p>
+          <a href="mailto:soldbyclaudia@proton.me" class="email-link" data-en="Email Me" data-es="Envíame un Email"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="resources">
+      <div class="back-link" onclick="showSection('home')">← <span data-en="Back" data-es="Atrás"></span></div>
+      <div class="content-section">
+        <h2 data-en="📋 Resources for First-Time Buyers" data-es="📋 Recursos para Compradores por Primera Vez"></h2>
+        
+        <h3 data-en="Down Payment Assistance Programs" data-es="Programas de Asistencia para el Pago Inicial"></h3>
+        <p data-en="Both Illinois and Indiana offer programs to help first-time buyers with down payment and closing costs." data-es="Tanto Illinois como Indiana ofrecen programas para ayudar a los compradores por primera vez con el pago inicial y los costos de cierre."></p>
+        <ul>
+          <li data-en="Illinois IHDA IHDAccess Home Program" data-es="Programa IHDA IHDAccess Home de Illinois"></li>
+          <li data-en="Indiana Housing Finance Authority (IHCDA) programs" data-es="Programas de la Autoridad de Financiamiento de Vivienda de Indiana (IHCDA)"></li>
+        </ul>
+        
+        <h3 data-en="Get Prequalified" data-es="Obtén una Precalificación"></h3>
+        <p data-en="Talk to a lender about prequalification and pre-approval. It's free and shows sellers you're serious." data-es="Habla con un prestamista sobre la precalificación y pre-aprobación. Es gratis y muestra a los vendedores que hablas en serio."></p>
+        
+        <h3 data-en="Understand Your Credit" data-es="Entiende tu Crédito"></h3>
+        <p data-en="Your credit score affects your loan rate and terms. Check your credit before applying for a mortgage." data-es="Tu puntuación de crédito afecta tu tasa de préstamo y condiciones. Verifica tu crédito antes de solicitar una hipoteca."></p>
+        
+        <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 0.5px solid #d3d1c7;">
+          <p data-en="Want to know which program you qualify for? Let's find out together." data-es="¿Quieres saber para cuál programa calificas? Descubrámoslo juntos."></p>
+          <a href="mailto:soldbyclaudia@proton.me" class="email-link" data-en="Email Me" data-es="Envíame un Email"></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="back-link" onclick="showSection('home')">← <span data-en="Back" data-es="Atrás"></span></div>
+      <div class="content-section">
+        <h2 data-en="💬 Let's Talk" data-es="💬 Hablemos"></h2>
+        <p data-en="Have questions? Ready to get started? I'm here to help." data-es="¿Tienes preguntas? ¿Listo para comenzar? Estoy aquí para ayudarte."></p>
+        
+        <div style="margin: 1.5rem 0; padding: 1rem; background: #f1efe8; border-radius: 8px;">
+          <p style="font-size: 13px; color: #888780; margin-bottom: 0.75rem;" data-en="Email me anytime—I'll get back to you within 24 hours." data-es="Envíame un email en cualquier momento—te responderé dentro de 24 horas."></p>
+          <a href="mailto:soldbyclaudia@proton.me" class="email-link" data-en="Send Email: soldbyclaudia@proton.me" data-es="Enviar Email: soldbyclaudia@proton.me"></a>
+        </div>
+        
+        <h3 data-en="What to expect" data-es="Qué esperar"></h3>
+        <ul>
+          <li data-en="I'll ask about your timeline and budget." data-es="Preguntaré sobre tu cronograma y presupuesto."></li>
+          <li data-en="We'll discuss neighborhoods and what matters most to you." data-es="Discutiremos vecindarios y qué te importa más."></li>
+          <li data-en="I'll explain the process step by step—no jargon." data-es="Explicaré el proceso paso a paso, sin jerga."></li>
+          <li data-en="No pressure. Only when you're ready." data-es="Sin presión. Solo cuando estés listo."></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <div class="footer">
+    <p data-en="© 2026 Claudia Barragan. Licensed through @properties Christie's International Real Estate." data-es="© 2026 Claudia Barragan. Licenciada a través de @properties Christie's International Real Estate."></p>
+  </div>
+
+  <script>
+    let currentLang = 'en';
+    
+    function setLanguage(lang) {
+      currentLang = lang;
+      document.querySelectorAll('[data-en][data-es]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+      
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+    }
+    
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(s => {
+        s.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+    
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', setLanguage);
+    });
+    
+    setLanguage('en');
+  </script>
+</body>
+</html>

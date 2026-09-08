@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First-Time Buyer Resources | Sold by Claudia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        header {
+            background-color: #1a3a52;
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo span {
+            color: #d4af37;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        main {
+            background-color: white;
+            padding: 60px 20px;
+            margin: 40px 0;
+            border-radius: 4px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: #1a3a52;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .intro-text {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            max-width: 700px;
+        }
+
+        .resources-section {
+            margin-bottom: 50px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .resources-section:last-of-type {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #1a3a52;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        .resource-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .resource-item strong {
+            color: #1a3a52;
+            font-weight: 600;
+        }
+
+        .form-section {
+            background-color: #f5f5f5;
+            padding: 40px;
+            border-radius: 4px;
+            margin-top: 50px;
+            max-width: 600px;
+        }
+
+        .form-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: #1a3a52;
+            margin-bottom: 20px;
+        }
+
+        .form-section p {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            color: #1a3a52;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
+        }
+
+        button {
+            background-color: #1a3a52;
+            color: white;
+            padding: 14px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        button:hover {
+            background-color: #0f2437;
+        }
+
+        .confirmation-message {
+            font-size: 14px;
+            color: #666;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            border-radius: 2px;
+            display: none;
+        }
+
+        .confirmation-message.show {
+            display: block;
+        }
+
+        footer {
+            background-color: #1a3a52;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 13px;
+        }
+
+        footer a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            nav a {
+                margin-left: 15px;
+                font-size: 12px;
+            }
+
+            .form-section {
+                padding: 25px;
+            }
+
+            header .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                display: flex;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">Sold by <span>Claudia</span></a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="resources.html">Resources</a>
+                <a href="mailto:soldbyclaudia@proton.me">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>First-Time Buyer Resources</h1>
+
+            <p class="intro-text">Starting the homebuying journey can feel overwhelming, especially when you do not know what to expect at each step. These free guides walk you through the offer and closing process so you can go into this with confidence and clarity.</p>
+
+            <div class="resources-section">
+                <h2>What You Will Get</h2>
+                
+                <div class="resource-item">
+                    <strong>One-Page Offer and Closing Checklist</strong><br>
+                    A quick reference guide that breaks down the key steps from making an offer through closing day. Available in English and Spanish.
+                </div>
+
+                <div class="resource-item">
+                    <strong>Complete First-Time Buyer Guide</strong><br>
+                    A detailed 7-page guide that walks you through each phase of the process. You will understand what happens at each step, what to expect, what to ask, and why it matters. Also available in English and Spanish.
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h3>Download Your Free Guides</h3>
+                <p>Enter your name and email to receive instant access to both the checklist and the complete guide.</p>
+
+                <form id="resourcesForm" action="https://formspree.io/f/xppzoooo" method="POST">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                    </div>
+
+                    <button type="submit">Send Me the Guides</button>
+
+                    <div class="confirmation-message">
+                        Thank you! Check your email for download links to both guides. If you do not see an email within a few minutes, please check your spam folder.
+                    </div>
+                </form>
+            </div>
+
+            <div class="resources-section" style="margin-top: 60px;">
+                <h2>Questions About the Process?</h2>
+                <p class="intro-text">These guides answer most of the questions first-time buyers have, but if you want to talk through your specific situation, I am here to help. Reach out anytime at <strong>soldbyclaudia@proton.me</strong> or call during business hours. There is no rush and no pressure—just honest conversation.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Sold by Claudia. All rights reserved.</p>
+            <p style="margin-top: 10px; font-size: 12px;">Claudia Barragan | Illinois & Indiana Real Estate Broker<br>
+            <a href="mailto:soldbyclaudia@proton.me">soldbyclaudia@proton.me</a></p>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('resourcesForm');
+        const confirmationMessage = document.querySelector('.confirmation-message');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Send form data to Formspree
+            fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            }).then(response => {
+                if (response.ok) {
+                    // Show confirmation message
+                    confirmationMessage.classList.add('show');
+                    // Clear form
+                    form.reset();
+                    // Hide form temporarily
+                    form.style.display = 'none';
+                    // Scroll to confirmation
+                    confirmationMessage.scrollIntoView({ behavior: 'smooth' });
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
